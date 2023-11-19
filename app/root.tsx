@@ -1,33 +1,87 @@
+import React from "react";
 import { cssBundleHref } from "@remix-run/css-bundle";
 import type { LinksFunction } from "@remix-run/node";
 import {
   Links,
   LiveReload,
   Meta,
-  Outlet,
   Scripts,
   ScrollRestoration,
+  useNavigation,
+  useRouteError,
 } from "@remix-run/react";
+import tailwind from "./tailwind.css";
+import { RootErrorUI } from "./components/root-error-ui";
+import { RootLayout } from "./components/layouts";
+import { FullPageLoadingUI } from "./components/loading-indicators";
+
+// export async function loader() {
+//   throw new Error("This is an error");
+// }
 
 export const links: LinksFunction = () => [
+  {
+    rel: "icon",
+    href: "/favicon.png",
+    type: "image/png",
+  },
+  {
+    rel: "preconnect",
+    href: "https://fonts.googleapis.com",
+  },
+  {
+    rel: "preconnect",
+    href: "https://fonts.gstatic.com",
+    crossOrigin: "anonymous",
+  },
+  {
+    rel: "stylesheet",
+    href: "https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&family=Mulish:wght@400&display=swap",
+  },
+
+  { rel: "stylesheet", href: tailwind },
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
 ];
 
-export default function App() {
+type DocumentProps = {
+  children: React.ReactNode;
+};
+
+function Document({ children }: DocumentProps) {
+  const navigation = useNavigation();
+  const isLoading = navigation.state === "loading";
+  if (isLoading) return <FullPageLoadingUI />;
   return (
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
         <Links />
       </head>
-      <body>
-        <Outlet />
+      <body className="min-h-screen min-w-full bg-slate-100">
+        {children}
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
       </body>
     </html>
+  );
+}
+
+export default function App() {
+  return (
+    <Document>
+      <RootLayout />
+    </Document>
+  );
+}
+
+export function ErrorBoundary() {
+  const error = useRouteError();
+  return (
+    <Document>
+      <RootErrorUI error={error} />
+    </Document>
   );
 }
