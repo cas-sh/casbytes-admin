@@ -15,10 +15,6 @@ import { RootErrorUI } from "./components/root-error-ui";
 import { RootLayout } from "./components/layouts";
 import { FullPageLoadingUI } from "./components/loading-indicators";
 
-// export async function loader() {
-//   throw new Error("This is an error");
-// }
-
 export const links: LinksFunction = () => [
   {
     rel: "icon",

@@ -23,7 +23,7 @@ export function SideBarContent({
   }
   return (
     <>
-      <div className="flex-col flex h-32 justify-between items-center gap-4 p-4 bg-stone-300">
+      <div className="flex-col flex h-32 justify-between items-center gap-4 p-4 bg-zinc-300">
         <img
           src={isOpen ? logo : icon}
           alt="CASBytes"

@@ -23,3 +23,52 @@ export default function AuthAppRoute() {
     </>
   );
 }
+
+const navLinks = [
+  {
+    icon: <BiSolidDashboard className={"text-slate-300 hover:text-white"} />,
+    name: "dashboard",
+    link: "/admin",
+  },
+  {
+    icon: <FaRegCalendarAlt className={"text-slate-300 hover:text-white"} />,
+    name: "calendar",
+    link: "calendar",
+  },
+  {
+    icon: <BiCalendarEvent className={"text-slate-300 hover:text-white"} />,
+    name: "events",
+    link: "event",
+  },
+
+  {
+    icon: <FaPeopleGroup className={"text-slate-300 hover:text-white"} />,
+    name: "students",
+    link: "students",
+  },
+  {
+    icon: <VscFeedback className={"text-slate-300 hover:text-white"} />,
+    name: "feedback",
+    link: "feedback",
+  },
+  {
+    icon: <BsPersonWorkspace className={"text-slate-300 hover:text-white"} />,
+    name: "workshops",
+    link: "workshop",
+  },
+  {
+    icon: <FaTasks className={"text-slate-300 hover:text-white"} />,
+    name: "submissions",
+    link: "submission",
+  },
+  {
+    icon: <FaDiscord className={"text-slate-300 hover:text-white"} />,
+    name: "discord",
+    link: "discord",
+  },
+  {
+    icon: <BsPersonCircle className={"text-slate-300 hover:text-white"} />,
+    name: "my account",
+    link: "my-account",
+  },
+];
