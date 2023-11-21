@@ -1,22 +1,32 @@
 import { Form } from "@remix-run/react";
 import { Button } from "./ui/button";
-import { LogOut } from "lucide-react";
 import { cn } from "~/libs/shadcn";
 
-export function SignOutButton({ isOpen }: { isOpen: boolean }) {
+export function SignOutButton({
+  className,
+  isOpen,
+  icon,
+}: {
+  className?: string;
+  isOpen?: boolean;
+  icon?: React.ReactNode;
+}) {
   return (
     <Form
-      method="POST"
+      method="post"
       action="/sign-out"
       data-testid="sign-out-form"
-      className="mx-auto"
+      className="flex justify-start"
     >
       <Button
         type="submit"
-        variant="destructive"
-        className={cn("p-2 flex gap-4 duration-300", isOpen && "slef-start")}
+        variant="link"
+        className={cn(
+          "flex p-4 self-start gap-4 duration-300 text-lg text-slate-200 hover:text-white w-full",
+          className,
+        )}
       >
-        <LogOut size={20} /> {isOpen && "Sign Out"}
+        {icon ? icon : null} {isOpen && "Sign Out"}
       </Button>
     </Form>
   );

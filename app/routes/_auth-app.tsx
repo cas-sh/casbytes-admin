@@ -1,73 +1,87 @@
 import React from "react";
 import { Outlet } from "@remix-run/react";
-import NavBar from "~/components/nav-bar";
-import { SideBar } from "~/components/side-bar";
+import {
+  CalendarCheck,
+  CalendarDays,
+  Contact2,
+  LayoutDashboard,
+  ListChecks,
+  MessageSquarePlus,
+  UserCircle2,
+  Users,
+} from "lucide-react";
+import { TooltipProvider } from "~/components/ui/tooltip";
 import { cn } from "~/libs/shadcn";
+import { SideBar } from "~/components/side-bar";
 import { Section } from "~/components/section";
+import MobileNav from "~/components/mobile-nav";
 
 export default function AuthAppRoute() {
   const [isOpen, setIsOpen] = React.useState(false);
-
   return (
-    <>
-      <NavBar />
-      <SideBar isOpen={isOpen} setIsOpen={setIsOpen} />
+    <TooltipProvider>
+      <MobileNav navLinks={navLinks} isOpen={isOpen} setIsOpen={setIsOpen} />
+      <SideBar navLinks={navLinks} isOpen={isOpen} setIsOpen={setIsOpen} />
       <Section
         className={cn(
           "duration-300",
-          isOpen ? "ml-0 md:ml-56" : "ml-0 md:ml-20",
+          isOpen ? "ml-0 md:ml-52" : "ml-0 md:ml-16",
         )}
       >
         <Outlet />
       </Section>
-    </>
+    </TooltipProvider>
   );
 }
 
+// export function ErrorBoundary() {
+//   return <ErrorUI error={error} />;
+// }
+
 const navLinks = [
   {
-    icon: <BiSolidDashboard className={"text-slate-300 hover:text-white"} />,
+    icon: <LayoutDashboard size={30} />,
     name: "dashboard",
-    link: "/admin",
+    link: "dashboard",
   },
   {
-    icon: <FaRegCalendarAlt className={"text-slate-300 hover:text-white"} />,
+    icon: <CalendarDays size={30} />,
     name: "calendar",
     link: "calendar",
   },
   {
-    icon: <BiCalendarEvent className={"text-slate-300 hover:text-white"} />,
+    icon: <CalendarCheck size={30} />,
     name: "events",
     link: "event",
   },
 
   {
-    icon: <FaPeopleGroup className={"text-slate-300 hover:text-white"} />,
+    icon: <Users size={30} />,
     name: "students",
     link: "students",
   },
   {
-    icon: <VscFeedback className={"text-slate-300 hover:text-white"} />,
+    icon: <MessageSquarePlus size={30} />,
     name: "feedback",
     link: "feedback",
   },
   {
-    icon: <BsPersonWorkspace className={"text-slate-300 hover:text-white"} />,
+    icon: <Contact2 size={30} />,
     name: "workshops",
     link: "workshop",
   },
   {
-    icon: <FaTasks className={"text-slate-300 hover:text-white"} />,
+    icon: <ListChecks size={30} />,
     name: "submissions",
     link: "submission",
   },
+  // {
+  //   icon: <ListChecks size={30} />,
+  //   name: "discord",
+  //   link: "discord",
+  // },
   {
-    icon: <FaDiscord className={"text-slate-300 hover:text-white"} />,
-    name: "discord",
-    link: "discord",
-  },
-  {
-    icon: <BsPersonCircle className={"text-slate-300 hover:text-white"} />,
+    icon: <UserCircle2 size={30} />,
     name: "my account",
     link: "my-account",
   },
