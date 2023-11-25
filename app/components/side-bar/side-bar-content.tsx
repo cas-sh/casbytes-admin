@@ -6,6 +6,7 @@ import icon from "~/assets/icon.png";
 import logo from "~/assets/logo.png";
 
 import { Button } from "../ui/button";
+import { Link } from "@remix-run/react";
 
 type SideBarContentProps = {
   isOpen: boolean;
@@ -24,12 +25,14 @@ export function SideBarContent({
   return (
     <>
       <div className="flex-col flex h-32 justify-between items-center gap-4 p-4 bg-gray-300">
-        <img
-          src={isOpen ? logo : icon}
-          alt="CASBytes"
-          width={isOpen ? 150 : 40}
-          className={cn(isOpen ? "w-[150px]" : "w-[40px]")}
-        />{" "}
+        <Link to="/dashboard">
+          <img
+            src={isOpen ? logo : icon}
+            alt="CASBytes"
+            width={isOpen ? 150 : 40}
+            className={cn(isOpen ? "w-[150px]" : "w-[40px]")}
+          />
+        </Link>
         <Button
           variant="ghost"
           onClick={toggleSideBar}

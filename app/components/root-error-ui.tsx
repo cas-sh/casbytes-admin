@@ -1,7 +1,7 @@
 import { useNavigation, useNavigate } from "@remix-run/react";
 import { XCircle } from "lucide-react";
 import { Section } from "./section";
-import { Button } from "./ui/button";
+import { Button } from "./custom-button";
 import logo from "~/assets/logo.png";
 
 type ErrorUIProps = {

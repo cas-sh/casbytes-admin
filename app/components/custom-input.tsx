@@ -1,36 +1,35 @@
 import { cn } from "~/libs/shadcn";
-import { Input } from "./ui/input";
+import { Input as ShInput } from "./ui/input";
 import { Label } from "./ui/label";
-import { Alert } from "./alert";
+import { CustomAlert } from "./custom-alert";
 
-type FormInputProps = {
-  type?: string;
+type InputProps = {
+  label?: string;
   className?: string;
   message?: string;
   autoComplete?: string;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
-export function FormInput({
-  type = "text",
+export function Input({
+  label,
   className = "",
   message = "",
   autoComplete = "off",
   ...props
-}: FormInputProps) {
+}: InputProps) {
   return (
     <div className="w-full">
       <Label htmlFor={props?.id} className="capitalize">
-        {props?.placeholder}
+        {label}
       </Label>
-      <Input
+      <ShInput
         {...props}
-        type={type}
-        aria-labelledby={props?.placeholder}
+        aria-labelledby={label ? label : props?.placeholder}
         autoComplete={autoComplete}
         className={cn("w-full", className)}
       />
       {message ? (
-        <Alert title={message} variant="destructive" className="mt-4" />
+        <CustomAlert title={message} variant="destructive" className="mt-4" />
       ) : null}
     </div>
   );

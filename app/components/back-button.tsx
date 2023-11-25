@@ -1,6 +1,7 @@
 import { Link } from "@remix-run/react";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "./ui/button";
+import { cn } from "~/libs/shadcn";
 
 type BackButtonProps = {
   className?: string;
@@ -16,9 +17,13 @@ export function BackButton({
   children,
 }: BackButtonProps) {
   return (
-    <Button variant="ghost" className={className} asChild>
+    <Button
+      variant="ghost"
+      className={cn("text-xl capitalize -ml-4 mb-8", className)}
+      asChild
+    >
       <Link to={to}>
-        <ArrowLeft className="mr-2 h-4 w-4" />
+        <ArrowLeft size={30} className="mr-2" />
         {buttonText}
         {children}
       </Link>

@@ -13,7 +13,6 @@ import {
 import { TooltipProvider } from "~/components/ui/tooltip";
 import { cn } from "~/libs/shadcn";
 import { SideBar } from "~/components/side-bar";
-import { Section } from "~/components/section";
 import MobileNav from "~/components/mobile-nav";
 
 export default function AuthAppRoute() {
@@ -22,14 +21,14 @@ export default function AuthAppRoute() {
     <TooltipProvider>
       <MobileNav navLinks={navLinks} isOpen={isOpen} setIsOpen={setIsOpen} />
       <SideBar navLinks={navLinks} isOpen={isOpen} setIsOpen={setIsOpen} />
-      <Section
+      <div
         className={cn(
           "duration-300",
           isOpen ? "ml-0 md:ml-52" : "ml-0 md:ml-16",
         )}
       >
         <Outlet />
-      </Section>
+      </div>
     </TooltipProvider>
   );
 }

@@ -7,13 +7,11 @@ import {
   Meta,
   Scripts,
   ScrollRestoration,
-  useNavigation,
   useRouteError,
 } from "@remix-run/react";
 import tailwind from "./tailwind.css";
 import { RootErrorUI } from "./components/root-error-ui";
 import { RootLayout } from "./components/layouts";
-import { FullPageLoadingUI } from "./components/loading-indicators";
 
 export const links: LinksFunction = () => [
   {
@@ -44,9 +42,6 @@ type DocumentProps = {
 };
 
 function Document({ children }: DocumentProps) {
-  const navigation = useNavigation();
-  const isLoading = navigation.state === "loading";
-  if (isLoading) return <FullPageLoadingUI />;
   return (
     <html lang="en">
       <head>

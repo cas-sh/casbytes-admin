@@ -1,5 +1,5 @@
 import { Link } from "@remix-run/react";
-import { Button } from "./ui/button";
+import { Button } from "./custom-button";
 import { Section } from "./section";
 
 export function NotFoundUI() {

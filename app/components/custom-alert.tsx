@@ -8,7 +8,7 @@ type AlertProps = {
   description?: string;
 };
 
-export function Alert({
+export function CustomAlert({
   className,
   variant = "default",
   title,
