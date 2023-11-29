@@ -13,7 +13,7 @@ export function DashboardCard({
   cardContent,
 }: DashboardCardProps) {
   return (
-    <Card>
+    <Card className="-p-4">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <CardTitle className="text-sm capitalize font-medium">
           {cardTitle}

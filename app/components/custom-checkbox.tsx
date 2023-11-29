@@ -1,18 +1,38 @@
-import { Checkbox as ShCheckbox } from "./ui/checkbox";
+import { cn } from "~/libs/shadcn";
 import { Label } from "./ui/label";
 
 type CheckboxProps = {
+  id: string;
+  name: string;
+  label: string;
+  checked?: boolean;
   className?: string;
-  label?: string;
-} & React.ComponentPropsWithoutRef<typeof ShCheckbox>;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+};
 
-export function Checkbox({ className, label, ...props }: CheckboxProps) {
+export function Checkbox({
+  id,
+  name,
+  label,
+  checked,
+  onChange,
+  className,
+  ...props
+}: CheckboxProps) {
   return (
     <div className="flex items-center space-x-2">
-      <ShCheckbox {...props} />
-      <Label htmlFor={props?.id} className="capitalize">
-        {label}
-      </Label>
+      <input
+        type="checkbox"
+        id={id}
+        name={name}
+        onChange={onChange}
+        className={cn(
+          "w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500",
+          className,
+        )}
+        {...props}
+      />
+      <Label htmlFor={id}>{label}</Label>
     </div>
   );
 }

@@ -4,7 +4,7 @@ import { SideBarContent } from "./side-bar-content";
 import { Button } from "../ui/button";
 import { Link } from "@remix-run/react";
 import { Tooltip } from "@radix-ui/react-tooltip";
-import { TooltipContent, TooltipTrigger } from "../ui/tooltip";
+import { CustomTooltip } from "../custom-tooltip";
 type SideBarProps = {
   navLinks: {
     icon: React.ReactNode;
@@ -30,11 +30,11 @@ export function SideBar({ navLinks, isOpen, setIsOpen }: SideBarProps) {
                 to={item.link}
                 className="flex gap-4 capitalize text-xl items-center"
               >
-                <TooltipTrigger>{item.icon}</TooltipTrigger>
+                <CustomTooltip
+                  tooltipTrigger={item.icon}
+                  tooltipContent={item.name}
+                />
                 {isOpen && item.name}
-                <TooltipContent>
-                  <p>{item.name}</p>
-                </TooltipContent>
               </Link>
             </Button>
           </Tooltip>

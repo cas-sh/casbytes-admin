@@ -5,52 +5,30 @@ import { CustomTableHeader } from "./custom-table-header";
 import { Table } from "../ui/table";
 
 type CustomTableProps = {
-  headerItems: string[];
-  bodyItems: any[];
-  viewUrl: string;
-  editUrl: string;
   formAction: string;
-  publishDialogTitle: string;
-  publishDialogDescription: string;
-  deleteDialogTitle: string;
-  deleteDialogDescription: string | React.ReactNode;
-  publishDialogActionOnConfirm: () => void;
-  deleteDialogActionOnConfirm: () => void;
+  children: React.ReactNode;
+  tableHeaderItems: string[];
   searchInputPlaceholder: string;
 };
 
-export function CustomTable({
-  headerItems = ["one", "two", "three"],
-  bodyItems = [{ one: "one", two: "two", three: "three" }],
-  viewUrl,
-  editUrl,
+function CustomTable({
+  children,
   formAction,
-  publishDialogTitle,
-  publishDialogDescription,
-  deleteDialogTitle,
-  deleteDialogDescription,
-  publishDialogActionOnConfirm,
-  deleteDialogActionOnConfirm,
+  tableHeaderItems,
   searchInputPlaceholder,
 }: CustomTableProps) {
   return (
-    <Table className="text-md w-full bg-white rounded-md drop-shadow-md">
+    <Table className="bg-white rounded-md drop-shadow-md">
       <CustomTableHeader
-        headItems={headerItems}
+        tableHeaderItems={tableHeaderItems}
         searchInputPlaceHolder={searchInputPlaceholder}
       />
-      <CustomTableBody
-        bodyItems={bodyItems}
-        viewUrl={viewUrl}
-        editUrl={editUrl}
-        publishDialogTitle={publishDialogTitle}
-        publishDialogDescription={publishDialogDescription}
-        publishDialogActionOnConfirm={publishDialogActionOnConfirm}
-        deleteDialogTitle={deleteDialogTitle}
-        deleteDialogDescription={deleteDialogDescription}
-        deleteDialogActionOnConfirm={deleteDialogActionOnConfirm}
-      />
+      <CustomTableBody>{children}</CustomTableBody>
       <CustomTableFooter formAction={formAction} />
     </Table>
   );
 }
+
+export { CustomTable };
+export { TableActionButtons } from "./table-action-buttons";
+export { TableStatusTooltip } from "./table-status-tooltip";

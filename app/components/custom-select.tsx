@@ -1,49 +1,55 @@
+import { CustomAlert } from "./custom-alert";
 import { Label } from "./ui/label";
 import {
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
 
 type SelectInputProps = {
-  placeholder?: string;
-  options: string[];
+  id: string;
+  name: string;
+  value?: string;
   label?: string;
-  groupLabel?: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-} & React.ComponentPropsWithoutRef<typeof SelectTrigger>;
+  message?: string;
+  options: string[];
+  className?: string;
+  placeholder?: string;
+  onValueChange?: (selectedValue: string) => void;
+} & React.ComponentPropsWithoutRef<typeof Select>;
 
 export function SelectInput({
-  options = [],
-  placeholder = options[0],
+  id,
+  name,
   label,
-  groupLabel,
-  onChange,
+  value,
+  message,
+  options,
+  className,
+  placeholder,
+  onValueChange,
   ...props
 }: SelectInputProps) {
   return (
-    <Select>
-      <Label htmlFor={props?.id} className="-mb-7">
-        {label}
-      </Label>
-      <SelectTrigger className="w-full" id={props?.id} {...props}>
-        <SelectValue placeholder={placeholder} />
-      </SelectTrigger>
-      <SelectContent onChange={onChange}>
-        <SelectGroup>
-          <SelectLabel>{groupLabel}</SelectLabel>
-          <hr />
-          {options.map((option, index) => (
-            <SelectItem key={`${option}-${index}`} value={option}>
+    <div className="flex flex-col space-y-2">
+      <Label htmlFor={name}>{label}</Label>
+      <Select onValueChange={onValueChange} name={name} {...props}>
+        <SelectTrigger className={className}>
+          <SelectValue placeholder={placeholder} />
+        </SelectTrigger>
+        <SelectContent className={className}>
+          {options.map((option) => (
+            <SelectItem key={option} value={option}>
               {option}
             </SelectItem>
           ))}
-        </SelectGroup>
-      </SelectContent>
-    </Select>
+        </SelectContent>
+      </Select>
+      {message ? (
+        <CustomAlert title={message} variant="destructive" className="mt-4" />
+      ) : null}
+    </div>
   );
 }
