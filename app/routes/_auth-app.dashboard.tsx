@@ -1,5 +1,10 @@
-import React from "react";
+import { Dashboard } from "~/components/dashboard";
+import { Section } from "~/components/section";
 
 export default function AdminIndexRoute() {
-  return <p>some dash</p>;
+  return (
+    <Section>
+      <Dashboard />;
+    </Section>
+  );
 }

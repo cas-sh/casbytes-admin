@@ -1,6 +1,6 @@
 import { Form } from "@remix-run/react";
 import { Section } from "~/components/section";
-import { FormInput } from "~/components/form-input";
+import { Input } from "~/components/custom-input";
 import { Button } from "~/components/ui/button";
 import logo from "~/assets/logo.png";
 
@@ -12,10 +12,10 @@ export default function SignInRoute() {
         action="/sign-in"
         className="flex flex-col gap-4 max-w-sm mx-auto p-8 rounded-md drop-shadow-xl bg-sky-600/20"
       >
-        <img src={logo} alt="CASBytes" width={150} className="mx-auto mb-4" />
         <h1 className="text-2xl text-center mb-6">Sign In</h1>
+        <img src={logo} alt="CASBytes" width={150} className="mx-auto mb-4" />
         {/* form inputs */}
-        <FormInput
+        <Input
           type="email"
           placeholder="Email address"
           id="email"

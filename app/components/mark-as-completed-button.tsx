@@ -1,6 +1,6 @@
 import { Link } from "@remix-run/react";
 import { CheckCircle } from "lucide-react";
-import { Button } from "./ui/button";
+import { Button } from "./custom-button";
 
 type MarkAsCompletedButtonProps = {
   className?: string;
