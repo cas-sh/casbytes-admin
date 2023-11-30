@@ -22,7 +22,7 @@ export default function EditCourseRoute() {
   const formRef = React.useRef<HTMLFormElement>(null);
 
   return (
-    <Section className="max-w-4xl">
+    <Section className="max-w-3xl">
       <BackButton to="/courses" buttonText="courses" />
       <PageTitle title="edit course" className="w-full mb-8" />
       <CourseForm

@@ -1,4 +1,7 @@
 node_modules
-build
-.cache
-/public
+/build
+/.cache
+/public/build
+coverage
+cypress
+.env
