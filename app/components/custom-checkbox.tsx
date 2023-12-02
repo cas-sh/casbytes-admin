@@ -4,7 +4,7 @@ import { Label } from "./ui/label";
 type CheckboxProps = {
   id: string;
   name: string;
-  label: string;
+  label: string | React.ReactNode;
   checked?: boolean;
   className?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;

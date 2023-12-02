@@ -25,6 +25,10 @@ export function ResourcesButtons() {
 
 const items = [
   {
+    name: "add user",
+    link: "/add-user",
+  },
+  {
     name: "add course",
     link: "/courses/add-course",
   },
